@@ -1,0 +1,34 @@
+<script>
+    // 1. Inisialisasi array untuk simulasi penyimpanan sementara 
+    const dataAnggota = [];
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        // Mencegah refresh halaman 
+        event.preventDefault();
+
+        // 2. Menangkap data dari input form [cite: 23]
+        const nama = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const minat = document.getElementById('interest').value;
+
+        // 3. Menyimpan data ke dalam array 
+        const anggotaBaru = { nama, email, minat };
+        dataAnggota.push(anggotaBaru);
+
+        // 4. Menampilkan interaksi sederhana melalui alert 
+        alert(`Berhasil mendaftar!\nNama: ${nama}\nData telah disimpan dalam array sementara.`);
+
+        // 5. Menampilkan hasil di bawah form agar pengguna bisa melihat data ditampung [cite: 24, 35]
+        const displayArea = document.getElementById('resultDisplay');
+        displayArea.classList.remove('d-none');
+        document.getElementById('outputData').innerHTML = `
+            <strong>Nama:</strong> ${nama} <br>
+            <strong>Email:</strong> ${email} <br>
+            <strong>Minat:</strong> ${minat} <br>
+            <em>Total data di array: ${dataAnggota.length}</em>
+        `;
+        
+        // Reset form setelah submit
+        this.reset();
+    });
+</script>
